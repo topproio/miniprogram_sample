@@ -7,9 +7,23 @@ Page({
         motto: 'Hello World',
         userInfo: {},
         hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        navInfo: [{
+            name: '动画',
+            path: '../animate/animate'
+        }, {
+            name: '自定义音乐播放器',
+            path: '../music/music'
+        }, {
+            name: '地图',
+            path: '../map/map'
+        }]
     },
-
+    navHandler: function(event) {
+        wx.navigateTo({
+            url:  this.data.navInfo[event.target.id].path
+        });
+    },
     // 事件处理函数
     bindViewTap: function() {
         wx.navigateTo({

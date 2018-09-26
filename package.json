@@ -4,12 +4,11 @@
   "version": "1.0.0",
   "main": "",
   "scripts": {
-	"test": "",
-	"create": "node ./create.js",
-	"dev": "gulp"
+    "test": "",
+    "create": "node ./create.js",
+    "dev": "gulp"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^5.6.0",
     "eslint-plugin-import": "^2.14.0",

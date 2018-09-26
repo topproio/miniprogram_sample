@@ -7,6 +7,11 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+  <view class="flex-wrap">
+    <view wx:for="{{navInfo}}" wx:for-item='i' wx:for-index="index">
+      <button bindtap='navHandler' class="index-nav-btn" id="{{index}}">{{i.name}}</button>
+    </view>
+  </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
