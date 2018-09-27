@@ -1,7 +1,9 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+		"pages/animate/animate",
+    "pages/map/map",
+    "pages/music/music"
   ],
   "window":{
     "backgroundTextStyle":"light",
