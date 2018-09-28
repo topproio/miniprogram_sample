@@ -23,7 +23,7 @@ Page({
         let _this = this;
         let ani = this.data.animation;
         ani.top(t).left(l).rotateZ(getRandomAng()).step();
-        function getRandomAng (){
+        function getRandomAng(){
             return Math.floor(Math.random()*4)*360;
         }
         this.data.animateStract.push({
@@ -44,7 +44,7 @@ Page({
         this.data.flag = false;
         let _this = this;
         loopStract();
-        function loopStract (){
+        function loopStract(){
             if(_this.data.animateStract.length === 0){
                 _this.data.flag = true;
                 return;
@@ -54,7 +54,7 @@ Page({
                     animationData: _pre.ani
                 });
                 setTimeout(function() {
-                     _this.data.animateStract.shift();
+                    _this.data.animateStract.shift();
                     _this.setData({
                         animateStract: _this.data.animateStract,
                     });
@@ -63,20 +63,20 @@ Page({
             }
         }
     },
-    init: function (){
+    init: function(){
         let ani = wx.createAnimation({
-        	duration: 1000,
-        	timingFunction: 'ease'
+            duration: 1000,
+            timingFunction: 'ease'
         });
         ani.top(0).left(0).step();
         this.setData({
-        	animation: ani
+            animation: ani
         });
         this.setData({
-        	animationData: ani.export()
+            animationData: ani.export()
         });
     },
-    onReady: function (){
+    onReady: function(){
         this.init();
     }
 });
