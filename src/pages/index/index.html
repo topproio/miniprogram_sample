@@ -8,8 +8,8 @@
     </block>
   </view>
   <view class="flex-wrap">
-    <view wx:for="{{navInfo}}" wx:for-item='i' wx:for-index="index">
-      <button bindtap='navHandler' class="index-nav-btn" id="{{index}}">{{i.name}}</button>
+    <view wx:for="{{navInfo}}" wx:for-item='item' wx:for-index="index" wx:key="{{index}}">
+      <button bindtap='navHandler' class="index-nav-btn" id="{{index}}">{{item.name}}</button>
     </view>
   </view>
   <view class="usermotto">
