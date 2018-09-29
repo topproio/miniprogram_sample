@@ -14,7 +14,7 @@
                 <view class="li">*例如：以下例子所添加的类是：{{currClass}}</view>
             </view>
             <view class="section">
-                <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <picker bindchange="onPickerChange" value="{{index}}" range="{{animations}}">
                     <view class="picker">
                     点我选择一个效果
                     </view>
@@ -36,7 +36,7 @@
     </view>
     
     <view class="animate-wrapper2">
-        <view class="position-wrapper" bindtap="tapHandler">
+        <view class="position-wrapper" bindtap="onTap">
             <view animation="{{animationData}}" class="moveble-box"></view>
             <view wx:for="{{animateStract}}"  wx:for-item='item' wx:for-index="index" wx:key="{{index}}" style="top:{{(animateStract[index].t-2)}}px;left:{{(animateStract[index].l-2)}}px"  class="static-box">
                 <view class="text">step{{item.i}}</view>

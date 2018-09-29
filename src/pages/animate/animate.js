@@ -4,24 +4,24 @@
 
 Page({
     data: {
-        array: ['fadeIn', 'fadeOut', 'bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble'],
+        animations: ['fadeIn', 'fadeOut', 'bounce', 'flash', 'pulse', 'rubberBand', 'shake', 'swing', 'tada', 'wobble'],
         currClass:'fadeIn animated box',
         animationData: {},
         animation: null,
         animateStract:[],
-        flag:true
+        loopFlag:true
     },
-    bindPickerChange: function(v){
-        let name = this.data.array[v.detail.value];
+    onPickerChange: function(v){
+        let pickClssName = this.data.animations[v.detail.value];
         this.setData({
-            currClass: name + ' animated box'
+            currClass: pickClssName + ' animated box'
         });
     },
-    tapHandler: function(v){
+    onTap: function(v){
         let t = v.detail.y - v.currentTarget.offsetTop;
         let l = v.detail.x;
-        let _this = this;
         let ani = this.data.animation;
+        let stract = this.data.animateStract;
         ani.top(t).left(l).rotateZ(getRandomAng()).step();
         function getRandomAng(){
             return Math.floor(Math.random()*4)*360;
@@ -30,28 +30,27 @@ Page({
             ani:ani.export(),
             t:t,
             l:l,
-            i:_this.data.animateStract.length === 0?1:(_this.data.animateStract[_this.data.animateStract.length-1].i + 1)
+            i:stract.length === 0?1:(stract[stract.length-1].i + 1)
         });
         this.setData({
             animateStract:this.data.animateStract
         });
-        this.stractHandler();
+        this.stractChangeHandler();
     },
-    stractHandler: function(){
-        if(!this.data.flag){
+    stractChangeHandler: function(){
+        if(!this.data.loopFlag){
             return;
         }
-        this.data.flag = false;
+        this.data.loopFlag = false;
         let _this = this;
         loopStract();
         function loopStract(){
             if(_this.data.animateStract.length === 0){
-                _this.data.flag = true;
+                _this.data.loopFlag = true;
                 return;
             }else{
-                let _pre = JSON.parse(JSON.stringify(_this.data.animateStract)).shift();
                 _this.setData({
-                    animationData: _pre.ani
+                    animationData: _this.data.animateStract[0].ani
                 });
                 setTimeout(function() {
                     _this.data.animateStract.shift();
