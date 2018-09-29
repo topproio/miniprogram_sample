@@ -38,7 +38,7 @@
     <view class="animate-wrapper2">
         <view class="position-wrapper" bindtap="onTap">
             <view animation="{{animationData}}" class="moveble-box"></view>
-            <view wx:for="{{animateStract}}"  wx:for-item='item' wx:for-index="index" wx:key="{{index}}" style="top:{{(animateStract[index].t-2)}}px;left:{{(animateStract[index].l-2)}}px"  class="static-box">
+            <view wx:for="{{animateQueue}}"  wx:for-item='item' wx:for-index="index" wx:key="{{index}}" style="top:{{(animateQueue[index].t-2)}}px;left:{{(animateQueue[index].l-2)}}px"  class="static-box">
                 <view class="text">step{{item.i}}</view>
             </view>
         </view>
