@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "main": "",
   "scripts": {
-    "test": "",
     "create": "node ./create.js",
     "dev": "gulp"
   },

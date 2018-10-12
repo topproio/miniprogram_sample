@@ -6,8 +6,14 @@
 yarn install
 ```
 
+## Create new page
+
+```
+yarn run create [page name]
+```
+
 ## Development
 
 ```
-npm run dev
+yarn run dev
 ```
