@@ -8,10 +8,10 @@
       <view class="wrapper">
           <view class="one-example">
                 <view class="title">地图功能1：功能按键</view>
-                <view class="ul">
-                        <view class="li">*定位到本地：需要在js环境获取map的实例，实例上的方法：moveToLocation可以定位到本地。</view>
-                        <view class="li">*获取map实例的方法为：wx.createMapContext(id, vm),其中两个参数：id为map标签中的id属性,vm为js环境的当前实例，一般情况下直接传入this即可</view>
-                        <view class="li">*放大缩小地图的功能非常简单：直接控制操作map标签的scale属性即可</view>
+                <view class="text-list">
+                        <view class="text-item">*定位到本地：需要在js环境获取map的实例，实例上的方法：moveToLocation可以定位到本地。</view>
+                        <view class="text-item">*获取map实例的方法为：wx.createMapContext(id, vm),其中两个参数：id为map标签中的id属性,vm为js环境的当前实例，一般情况下直接传入this即可</view>
+                        <view class="text-item">*放大缩小地图的功能非常简单：直接控制操作map标签的scale属性即可</view>
                 </view>
                 <view class="box-wrapper">
                     
@@ -40,10 +40,10 @@
           </view>
           <view class="one-example">
                 <view class="title">地图功能2：自定义标记点</view>
-                <view class="ul">
-                        <view class="li">*在map标签markers属性可以填充一个数组中，这个数组的每一条为一个marker（标记点）</view>
-                        <view class="li">*每一个标记点为一条JSON：可以通过lable属性定义下标，也可以定义callout属性为弹出的气泡框。</view>
-                        <view class="li">*该例子的交互逻辑为点击callout气泡框进入微信自带地图页面，通过该页面可以调用第三方地图进行导航</view>
+                <view class="text-list">
+                        <view class="text-item">*在map标签markers属性可以填充一个数组中，这个数组的每一条为一个marker（标记点）</view>
+                        <view class="text-item">*每一个标记点为一条JSON：可以通过lable属性定义下标，也可以定义callout属性为弹出的气泡框。</view>
+                        <view class="text-item">*该例子的交互逻辑为点击callout气泡框进入微信自带地图页面，通过该页面可以调用第三方地图进行导航</view>
                 </view>
                 <view class="box-wrapper">
                     <map id="map2" 
@@ -64,10 +64,10 @@
           
           <view class="one-example">
           	<view class="title">地图功能3：区域以及线框</view>
-          	<view class="ul">
-          			<view class="li">*map标签中，填充polyline属性来绘制地图连线。</view>
-          			<view class="li">*map标签中，填充polygons属性来绘制地图区域。</view>
-          			<view class="li">*其中，polygons（区域）需要微信小程序2.30以上版本。</view>
+          	<view class="text-list">
+          			<view class="text-item">*map标签中，填充polyline属性来绘制地图连线。</view>
+          			<view class="text-item">*map标签中，填充polygons属性来绘制地图区域。</view>
+          			<view class="text-item">*其中，polygons（区域）需要微信小程序2.30以上版本。</view>
           	</view>
           	<view class="box-wrapper">
           		<map id="map3" 
