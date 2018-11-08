@@ -1,0 +1,22 @@
+<view class="carmera-container">
+    <view class="carmera-wrap">
+        <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 300px;"></camera>
+        <view class="carmera-btn-wrap">
+            <button class="carmera-btn" bindtap="takePhoto">点此拍照</button>
+            <button class="carmera-btn" bindtap="startVideo" wx:if="{{showStart}}">点此开始录像</button>
+            <button class="carmera-btn" bindtap="endVideo" wx:if="{{!showStart}}">点此结束录像</button>
+        </view>
+        <view wx:if="{{photoPath!=''}}">
+            <image src="{{photoPath}}"></image>
+        </view>
+        <view wx:if="{{videoPath!=''}}">
+            <video  src="{{videoPath}}" poster="{{thumbPath}}"></video>
+        </view>
+    </view>
+    <view class="carmera-wrap-list">
+        <block >
+            <image wx:for="{{imagesList}}" src="{{item.path}}" bindlongtap="deleteImg" catchtap="previewImg" data-index="{{index}}"></image>
+        </block>
+        <image src="./upload.png" bindtap="getImages"></image>
+    </view>
+</view>

@@ -20,6 +20,9 @@ Page({
         }, {
             name: '分享',
             path: '../share/share'
+        }, {
+            name: '照片',
+            path: '../carmera/carmera'
         }]
     },
     navHandler: function(event) {
@@ -74,5 +77,24 @@ Page({
             userInfo: e.detail.userInfo,
             hasUserInfo: true
         });
+    },
+    onShareAppMessage: (res) => {
+        let tip='';
+        if (res.from === 'button') {
+            tip='按钮';
+        } else {
+            tip='右上角';
+        }
+        return {
+            title: '标题',
+            path: '/pages/index/index',
+            imageUrl: '/share.jpg',
+            success: () => {
+                app.msg(tip+'转发成功');
+            },
+            fail: () => {
+                app.msg(tip+'转发失败');
+            },
+        };
     }
 });
