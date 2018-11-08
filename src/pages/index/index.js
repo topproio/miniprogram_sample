@@ -17,12 +17,19 @@ Page({
         }, {
             name: '地图',
             path: '../map/map'
+        }, {
+            name: '分享',
+            path: '../share/share'
         }]
     },
     navHandler: function(event) {
-        wx.navigateTo({
-            url:  this.data.navInfo[event.target.id].path
-        });
+        var index = event.currentTarget.dataset.index;
+        if(index!==3){
+            wx.navigateTo({
+                url:  this.data.navInfo[event.target.id].path
+            });
+        }
+        
     },
     // 事件处理函数
     bindViewTap: function() {

@@ -9,7 +9,8 @@
   </view>
   <view class="flex-wrap">
     <view wx:for="{{navInfo}}" wx:for-item='item' wx:for-index="index" wx:key="{{index}}">
-      <button bindtap='navHandler' class="index-nav-btn" id="{{index}}">{{item.name}}</button>
+      <button wx:if="{{index==3}}" class="index-nav-btn" open-type="share">{{item.name}}</button>
+      <button wx:if="{{index!=3}}" bindtap='navHandler' class="index-nav-btn" id="{{index}}">{{item.name}}</button>
     </view>
   </view>
   <view class="usermotto">
