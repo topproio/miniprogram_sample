@@ -23,6 +23,9 @@ Page({
         }, {
             name: '照片',
             path: '../carmera/carmera'
+        }, {
+            name: '登录',
+            path: '../login/login'
         }]
     },
     navHandler: function(event) {

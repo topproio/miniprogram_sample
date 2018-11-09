@@ -4,7 +4,8 @@
 		"pages/animate/animate",
     "pages/map/map",
     "pages/music/music",
-    "pages/carmera/carmera"
+    "pages/carmera/carmera",
+    "pages/login/login"
   ],
   "window":{
     "backgroundTextStyle":"light",
