@@ -26,9 +26,9 @@ And open ./dist using the miniprogram development tool.
 - [X] Map
 - [X] Animations
 - [X] MP3 player
-- [ ] Share to friends
+- [X] Share to friends
 - [ ] Charts
-- [ ] Carmera and preview
+- [X] Carmera and preview
 - [ ] Login
 
 ## Change log
