@@ -3,7 +3,8 @@
     "pages/index/index",
 		"pages/animate/animate",
     "pages/map/map",
-    "pages/music/music"
+    "pages/music/music",
+    "pages/carmera/carmera"
   ],
   "window":{
     "backgroundTextStyle":"light",
