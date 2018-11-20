@@ -1,0 +1,45 @@
+@color: aqua;
+@viewBorder: #dddddd 1px solid;
+@height80: 80rpx;
+@font28: 28rpx;
+@height36: 36rpx;
+@padding: 20rpx;
+.login-container{
+    .form-list{
+        width: @padding*35-10;
+        margin: 0 auto;
+        height: @height80;
+        line-height: @height80;
+        border-bottom: @viewBorder;
+        .flex();
+        .form-label{
+            font-size: @font28;
+        }
+        .form-input{
+            font-size: @font28;
+            padding-top: @padding;
+            line-height: @height36;
+            height: @height36;
+            text-align: right;
+        }
+        label{
+            .form-label();
+        }
+    }
+    .btn-area{
+        padding-top: @padding*5;
+        .flex();
+        button{
+            background-color: transparent;
+            color: @color;
+            border: solid 1px @color;
+            height: @height80;
+            width: @padding*12;
+            line-height: @height80;
+        }
+    }
+}
+.flex{
+    display: flex;
+    justify-content: space-between;
+}

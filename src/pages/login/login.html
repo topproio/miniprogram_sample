@@ -1,0 +1,30 @@
+<view class="login-container">
+    <form bindsubmit="formSubmit" >
+        <view class="form-list">
+            <view class="form-label">用户名</view>
+            <input name="userName" type="text" class="form-input" placeholder="请输入用户名" />
+        </view>
+        <view class="form-list">
+            <view class="form-label">密码</view>
+            <input name="passWord" type="password" class="form-input" placeholder="请输入密码" />
+        </view>
+        <view class="form-list">
+            <view class="form-label">性别</view>
+            <radio-group name="sex">
+                <label><radio value="male" />男</label>
+                <label><radio value="female" />女</label>
+            </radio-group>
+        </view>
+        <view class="form-list">
+            <view class="form-label">爱好</view>
+            <checkbox-group name='hobby'>
+                <label class="checkbox" wx:for="{{items}}">
+                    <checkbox value="{{item}}" />{{item}}
+                </label>
+            </checkbox-group>
+        </view>
+        <view class="btn-area">
+          <button formType="submit">提交</button>
+        </view>
+    </form>
+</view>
