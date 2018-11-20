@@ -1,19 +1,28 @@
-const formatTime = date => {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    const second = date.getSeconds();
-
-    return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':');
+const app = getApp();
+const empty = function(name, reg, err) {
+    if (!(reg.test(name))) {
+        app.msg(err);
+    }
 };
 
-const formatNumber = n => {
-    n = n.toString();
-    return n[1] ? n : '0' + n;
+const getValidateProxy=function(target, validators) {
+    return new Proxy(target, {
+        _validators: validators,
+        set(target, prop, value) {
+            // if (value === '') {
+            //     return target[prop] = false;
+            // }
+            const validResult = this._validators[prop](value);
+            if (validResult.valid) {
+                return Reflect.set(target, prop, value);
+            } else {
+                app.msg(`${validResult.error}`);
+                return target[prop] = false;
+            }
+        }
+    });
 };
-
 module.exports = {
-    formatTime: formatTime
+    empty: empty,
+    getValidateProxy: getValidateProxy,
 };
