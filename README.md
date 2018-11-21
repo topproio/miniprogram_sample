@@ -31,6 +31,7 @@ And open ./dist using the miniprogram development tool.
 - [X] Carmera and preview
 - [X] Login
 - [ ] Record
+- [ ] Bluetooth
 
 ## Change log
 
