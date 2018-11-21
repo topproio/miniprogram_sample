@@ -55,14 +55,6 @@ Page({
         const onStopHandler = this.onStopHandler.bind(this);
         this.recordManager.onStop(onStopHandler);
     },
-    // 错误的handler，暂时留存，可能API另作他用
-    onInterruptionBeginHandler(){
-        console.log('interrupt-begin');
-    },
-    // 错误的handler，暂时留存，可能API另作他用
-    onInterruptionEndHandler(){
-        console.log('interrupt-end');
-    },
     onErrorHandler(){
         console.log('error');
     },
