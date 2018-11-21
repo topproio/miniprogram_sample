@@ -26,6 +26,9 @@ Page({
         }, {
             name: '登录',
             path: '../login/login'
+        }, {
+            name: 'wifi',
+            path: '../wifi/wifi'
         }]
     },
     navHandler: function(event) {

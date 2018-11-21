@@ -5,7 +5,8 @@
     "pages/map/map",
     "pages/music/music",
     "pages/carmera/carmera",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/wifi/wifi"
   ],
   "window":{
     "backgroundTextStyle":"light",

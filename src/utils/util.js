@@ -5,7 +5,7 @@ const empty = function(name, reg, err) {
     }
 };
 
-const getValidateProxy=function(target, validators) {
+const getValidateProxy = function(target, validators) {
     return new Proxy(target, {
         _validators: validators,
         set(target, prop, value) {
@@ -22,7 +22,25 @@ const getValidateProxy=function(target, validators) {
         }
     });
 };
+function arrayBufferToHexString(buffer) {
+    // let bufferType = Object.prototype.toString.call(buffer);
+    // if (buffer !== '[object ArrayBuffer]') {
+    //     console.log('no ArrayBuffer');
+    //     return;
+    // }
+    let dataView = new DataView(buffer);
+
+    var hexStr = '';
+    for (var i = 0; i < dataView.byteLength; i++) {
+        var str = dataView.getUint8(i);
+        var hex = (str & 0xff).toString(16);
+        hex = (hex.length === 1) ? '0' + hex : hex;
+        hexStr += hex;
+    }
+    return hexStr.toUpperCase();
+}
 module.exports = {
     empty: empty,
     getValidateProxy: getValidateProxy,
+    arrayBufferToHexString: arrayBufferToHexString,
 };
