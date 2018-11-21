@@ -101,7 +101,7 @@ Page({
         }, 1000);
     },
     initWave(){
-        let ctx = this.waveCtx = wx.createCanvasContext('wave', this);
+        // let ctx = this.waveCtx = wx.createCanvasContext('wave', this);   // 未声明变量报错
     },
     onTap_pause(){
         if(!this.musicContext){

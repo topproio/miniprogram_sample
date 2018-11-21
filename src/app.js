@@ -39,7 +39,14 @@ App({
             }
         });
     },
+    msg(e) {
+        wx.showToast({
+            title: e,
+            image: '/imgs/face.png',
+            duration: 1000,
+        });
+    },
     globalData: {
-        userInfo: null
+        userInfo: null,
     }
 });

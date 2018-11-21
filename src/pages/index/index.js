@@ -18,12 +18,25 @@ Page({
         }, {
             name: '地图',
             path: '../map/map'
+        }, {
+            name: '分享',
+            path: '../share/share'
+        }, {
+            name: '照片',
+            path: '../carmera/carmera'
+        }, {
+            name: '登录',
+            path: '../login/login'
         }]
     },
     navHandler: function(event) {
-        wx.navigateTo({
-            url:  this.data.navInfo[event.target.id].path
-        });
+        var index = event.currentTarget.dataset.index;
+        if(index!==3){
+            wx.navigateTo({
+                url:  this.data.navInfo[event.target.id].path
+            });
+        }
+        
     },
     // 事件处理函数
     bindViewTap: function() {
@@ -68,5 +81,24 @@ Page({
             userInfo: e.detail.userInfo,
             hasUserInfo: true
         });
+    },
+    onShareAppMessage: (res) => {
+        let tip='';
+        if (res.from === 'button') {
+            tip='按钮';
+        } else {
+            tip='右上角';
+        }
+        return {
+            title: '标题',
+            path: '/pages/index/index',
+            imageUrl: '/share.jpg',
+            success: () => {
+                app.msg(tip+'转发成功');
+            },
+            fail: () => {
+                app.msg(tip+'转发失败');
+            },
+        };
     }
 });
