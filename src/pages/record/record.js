@@ -2,7 +2,7 @@ Page({
     data: {
         hello: '',
         todoList: [],
-        playindex: -1,
+        playindex: 0,
         recordStatus:'0' // 0:未开始，1：进行中，2：暂停中
     },
     recordManager: null,
@@ -25,7 +25,9 @@ Page({
     },
     endedHandler() {
         console.log('ended');
-        this.changeItem(this.playindex + 1);
+        let length = this.data.todoList.length;
+        let nextItem = (this.data.playindex + 1) > length - 1 ? 0 : (this.data.playindex + 1);
+        this.changeItem(nextItem);
     },
     changeItem(index) {
         this.data.todoList.forEach( i => {
@@ -33,6 +35,9 @@ Page({
         });
         let {src} = this.data.todoList[index];
         this.innerAudioContext.src = src;
+        this.setData({
+            playindex: index
+        });
         this.innerAudioContext.play();
     },
     getManager(){
