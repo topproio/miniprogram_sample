@@ -6,12 +6,12 @@
     "pages/music/music",
     "pages/carmera/carmera",
     "pages/login/login",
-    "pages/wifi/wifi"
+    "pages/bluetooth/bluetooth"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
-  }
+  } 
 }

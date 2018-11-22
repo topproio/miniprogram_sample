@@ -27,8 +27,8 @@ Page({
             name: '登录',
             path: '../login/login'
         }, {
-            name: 'wifi',
-            path: '../wifi/wifi'
+            name: '蓝牙',
+            path: '../bluetooth/bluetooth'
         }]
     },
     navHandler: function(event) {

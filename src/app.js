@@ -49,7 +49,7 @@ App({
     loading(e) {
         wx.showLoading({
             title: e,
-            mask: true,
+            mask: false,
         });
     },
     globalData: {

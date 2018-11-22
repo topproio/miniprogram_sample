@@ -39,8 +39,20 @@ function arrayBufferToHexString(buffer) {
     }
     return hexStr.toUpperCase();
 }
+function hexStringToArrayBuffer(str) {
+    var buffer = new ArrayBuffer(str.length);
+    let dataView = new DataView(buffer);
+    let ind = 0;
+    for (var i = 0, len = str.length; i < len; i += 2) {
+        let code = parseInt(str.substr(i, 2), 16);
+        dataView.setUint8(ind, code);
+        ind++;
+    }
+    return buffer;
+}
 module.exports = {
     empty: empty,
     getValidateProxy: getValidateProxy,
     arrayBufferToHexString: arrayBufferToHexString,
+    hexStringToArrayBuffer: hexStringToArrayBuffer,
 };

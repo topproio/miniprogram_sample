@@ -1,0 +1,41 @@
+<view class="wifi-container">
+    <button class="btn" bindtap="getBlueTooth">点击查看蓝牙列表</button>
+    <view class="bluetooth-list">
+        <view>当前连接设备：{{deviceName}}</view> 
+        <view wx:for="{{dataList}}" class="bluetooth-list-inner">
+            <view>
+                <text>设备名：{{item.name}}</text>
+                <button data-deviceid="{{item.deviceId}}" data-name="{{item.name}}" wx:if="{{item.deviceId != deviceid}}" bindtap="createConnect" data-index="{{index}}">连接</button>
+                <button data-deviceid="{{item.deviceId}}" wx:if="{{item.deviceId == deviceid}}" bindtap="closeConnect" data-index="{{index}}">断开</button>
+            </view>
+        </view>
+        <view class="bluetooth-list-inner">
+            <view wx:if="{{item.uuid == uuids.battery}}" wx:for="{{characteristic}}">
+                <text>电池电量：{{battery}}</text>
+
+                <button data-uuid="{{item.uuid}}" data-read="{{item.read}}" data-write="{{item.write}}" data-notify="{{item.notify}}" 
+                data-indicate="{{item.indicate}}" data-deviceid="{{item.deviceid}}" data-serviceid="{{item.serviceid}}" bindtap="getInfo" data-argument="battery">读取</button>
+            </view>
+            <view wx:if="{{item.uuid == uuids.deviceName}}" wx:for="{{characteristic}}">
+                <text>设备名称：{{name}}</text>
+                <button data-uuid="{{item.uuid}}" data-read="{{item.read}}" data-write="{{item.write}}" data-notify="{{item.notify}}" 
+                data-indicate="{{item.indicate}}" data-deviceid="{{item.deviceid}}" data-serviceid="{{item.serviceid}}" bindtap="getInfo" data-argument="name">读取</button>
+                <button data-uuid="{{item.uuid}}" data-read="{{item.read}}" data-write="{{item.write}}" data-notify="{{item.notify}}" 
+                data-indicate="{{item.indicate}}" data-deviceid="{{item.deviceid}}" data-serviceid="{{item.serviceid}}" bindtap="setInfo" data-argument="name">修改</button>
+            </view>
+        </view>
+    </view>
+
+    <!-- <view class="notice">*已连接的设备在小程序蓝牙中搜不到</view>
+    <view class="notice">低功耗 (LE) 蓝牙是从蓝牙4.0起支持的协议，特点就是耗电极低、传输速度更快，常用在对续航要求较高且
+        只需小数据量传输的各种智能电子产品中，包括心率监测仪器、体温计、血糖仪、智能穿戴设备、胎压监测和电子烟等等，应用场景
+        广泛，所以小程序在很早的版本（基础库 1.1.0）就优先支持了低功耗蓝牙能力。</view>
+    <view class="notice">*以荣耀手环为例</view>
+    <view class="notice">*https://www.cnblogs.com/bulazhang/p/8450172.html</view>
+    <view class="notice">*service.uuid: 00002A19-0000-1000-8000-00805F9B34FB     Battery Level</view>
+    <view class="notice">*service.uuid: 0000180A-0000-1000-8000-00805F9B34FB     Device Information Service</view>
+    <view class="notice">*service.uuid: 00001812-0000-1000-8000-00805F9B34FB     Human Interface Device</view>
+    <view class="notice">*service.uuid: 0000180D-0000-1000-8000-00805F9B34FB     Heart Rate Service</view>
+    <view class="notice">*service.uuid: 00001800-0000-1000-8000-00805F9B34FB     Generic Access</view>
+    <view class="notice">*service.uuid: 00001801-0000-1000-8000-00805F9B34FB     Generic Attribute</view> -->
+</view>
