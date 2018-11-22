@@ -143,10 +143,10 @@ Page({
     },
     // 浅拷贝
     extend(parent, child) {
-        var child = child || {};
+        var children = child || {};
         for (var prop in parent) {
-            child[prop] = parent[prop];
+            children[prop] = parent[prop];
         }
-        return child;
+        return children;
     }
 });
