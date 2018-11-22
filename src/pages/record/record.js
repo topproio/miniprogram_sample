@@ -3,7 +3,7 @@ Page({
         hello: '',
         todoList: [],
         playindex: -1,
-        recordStatus:'0',// 0:未开始，1：进行中，2：暂停中
+        recordStatus:'0' // 0:未开始，1：进行中，2：暂停中
     },
     recordManager: null,
     innerAudioContext: null,
@@ -17,7 +17,7 @@ Page({
         this.initInnerManager();
     },
     getInnerManager() {
-        this.innerAudioContext =  wx.createInnerAudioContext();
+        this.innerAudioContext = wx.createInnerAudioContext();
     },
     initInnerManager() {
         const endedHandler = this.endedHandler.bind(this);
@@ -62,47 +62,47 @@ Page({
         // 0:未开始，1：进行中，2：暂停中
         this.setData({
             recordStatus: '2'
-        })
+        });
         console.log('onPause');
     },
     onResumeHandler() {
         this.setData({
             recordStatus: '1'
-        })
+        });
         console.log('onResume');
     },
     onStartHandler() {
         this.setData({
             recordStatus: '2'
-        })
+        });
         console.log('onstart');
     },
     onStopHandler(res) {
         let src = res.tempFilePath;
-        let date = new Date()
+        let date = new Date();
         let _item = {
             src,
             play: 'false',
             time: `${date.getFullYear()}-${date.getMonth()}-${date.getDay()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-        }
+        };
         this.data.todoList.push(_item);
         console.log(this.data.todoList);
         this.setData({
             todoList:  this.data.todoList,
             recordStatus: '0'
         });
-        console.log('onStop',res);
+        console.log('onStop', res);
     },
     startRecord(options) {
         // 默认配置
         let defaultOption  = {
-            duration: 30000,// 最长时间30s
-            sampleRate: 44100,// 采样率44.1kbps
-            numberOfChannels: 1,// 第一频道？
-            encodeBitRate: 192000,// 码流率192bps
-            format: 'aac',// 编码格式aac
+            duration: 30000, // 最长时间30s
+            sampleRate: 44100, // 采样率44.1kbps
+            numberOfChannels: 1, // 第一频道？
+            encodeBitRate: 192000, // 码流率192bps
+            format: 'aac', // 编码格式aac
             frameSize: 50// 框架大小，什么意思
-        }
+        };
         // 如果没有options或者options中没有设置，则使用默认配置
         options = this.extend(defaultOption, options);
         this.recordManager.start(options);
@@ -119,14 +119,17 @@ Page({
     onTap_record() {
         // 0:未开始，1：进行中，2：暂停中
         switch (this.data.recordStatus){
-            case '0': // 未开始
-                this.startRecord();
+        case '0': // 未开始
+            this.startRecord();
             break;
-            case '1': // 进行中
-                this.pauseRecord();
+        case '1': // 进行中
+            this.pauseRecord();
             break;
-            case '2': // 暂停中
-                this.resumeRecord();
+        case '2': // 暂停中
+            this.resumeRecord();
+            break;
+        default:
+            this.startRecord();
             break;
         }
     },
@@ -135,10 +138,10 @@ Page({
     },
     onTap_playItem(res) {
         let index = res.currentTarget.dataset.index;
-        console.log(res)
+        console.log(res);
         this.changeItem(index);
     },
-    //浅拷贝
+    // 浅拷贝
     extend(parent, child) {
         var child = child || {};
         for (var prop in parent) {
