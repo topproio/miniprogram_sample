@@ -143,8 +143,8 @@ Page({
     },
     // 浅拷贝
     extend(parent, child) {
-        var children = child || {};
-        for (var prop in parent) {
+        let children = child || {};
+        for (let prop in parent) {
             children[prop] = parent[prop];
         }
         return children;
