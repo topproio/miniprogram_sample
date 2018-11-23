@@ -37,6 +37,25 @@
   line-height: 40px;
   padding-left: 25px;
   color: #fff;
+  position: relative;
+  .playbtn{
+    width:30px;
+    height: 30px;
+    border:2px solid #1170a6;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    right: 2px;
+    top:2px;
+    .img{
+      width: 50%;
+      height: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    }
+  }
 }
 .icon-stop{
   background: url("./stop.png") 0 0 no-repeat;

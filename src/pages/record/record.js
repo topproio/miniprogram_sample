@@ -34,9 +34,11 @@ Page({
             i.play = 'false';
         });
         let {src} = this.data.todoList[index];
+        this.data.todoList[index].play = 'true';
         this.innerAudioContext.src = src;
         this.setData({
-            playindex: index
+            playindex: index,
+            todoList: this.data.todoList
         });
         this.innerAudioContext.play();
     },
@@ -80,6 +82,7 @@ Page({
         this.setData({
             recordStatus: '2'
         });
+        this.onAudioPause();
         console.log('onstart');
     },
     onStopHandler(res) {
@@ -97,6 +100,15 @@ Page({
             recordStatus: '0'
         });
         console.log('onStop', res);
+    },
+    onAudioPause(){
+        this.data.todoList.forEach( i => {
+            i.play = 'false';
+        });
+        this.innerAudioContext.pause();
+        this.setData({
+            todoList: this.data.todoList
+        });
     },
     startRecord(options) {
         // 默认配置

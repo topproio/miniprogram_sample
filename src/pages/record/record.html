@@ -3,7 +3,9 @@
     <view class="records">
         <view class="record" wx:for="{{todoList}}" wx:for-index="idx" wx:for-item="item" wx:key="{{idx}}"  ontap="onTap_playItem" data-index="{{idx}}">
             <view>{{idx}}:{{item.time}}</view>
-            <view class="playbtn {{item.play === 'true'?'stop':'play'}}"></view>
+            <view class="playbtn">
+                <image src="{{item.play === 'false'?'./s1.png':'./s2.png'}}" class="img"></image>
+            </view>
         </view>
     </view>
     <view class="btn-box">
