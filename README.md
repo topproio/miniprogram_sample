@@ -26,10 +26,12 @@ And open ./dist using the miniprogram development tool.
 - [X] Map
 - [X] Animations
 - [X] MP3 player
-- [ ] Share to friends
+- [X] Share to friends
 - [ ] Charts
-- [ ] Carmera and preview
-- [ ] Login
+- [X] Carmera and preview
+- [X] Login
+- [ ] Record
+- [ ] Bluetooth
 
 ## Change log
 
