@@ -27,6 +27,9 @@ Page({
         }, {
             name: '登录',
             path: '../login/login'
+        }, {
+            name: '蓝牙',
+            path: '../bluetooth/bluetooth'
         }]
     },
     navHandler: function(event) {

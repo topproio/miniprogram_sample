@@ -46,6 +46,12 @@ App({
             duration: 1000,
         });
     },
+    loading(e) {
+        wx.showLoading({
+            title: e,
+            mask: false,
+        });
+    },
     globalData: {
         userInfo: null,
     }

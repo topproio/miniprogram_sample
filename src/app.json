@@ -4,14 +4,15 @@
     "pages/animate/animate",
     "pages/map/map",
     "pages/music/music",
-    "pages/record/record"
+    "pages/record/record",
     "pages/carmera/carmera",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/bluetooth/bluetooth"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
-  }
+  } 
 }
