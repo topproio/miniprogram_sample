@@ -39,9 +39,28 @@ gulp.task('build:page', () => {
         .pipe(gulp.dest('dist'));
 });
 
+
+const uploadOption = require('./uploadOption.js');
+    upload = require('gulp-qndn').upload,//七牛上传
+    replace = require('gulp-replace');
+
+gulp.task('build:uploadimage', () => {
+    gulp.src(['src/**/*.jpg','src/**/*.png'],{ base: 'src' })
+        .pipe(upload({qn: uploadOption.qnOption}));
+})
+
+gulp.task('build:replace', () => {
+    gulp.src(['dist/**/*.wxml','dist/**/*.wxss'])
+        .pipe(replace(/[\.|\.\.\/]+[(a-z0-9A-Z_)+/]+(\.jpg|\.png)/g, function(match){
+            return match.replace(/^[(\.)|(\.\.)\/]+/,uploadOption.viewPath);
+        }))
+        .pipe(gulp.dest('dist'));
+})
+
+gulp.task('default', ['watch', 'build:lint', 'build:style', 'build:page']);
+gulp.task('uploadImg', ['build:uploadimage', 'build:replace']);
+
 gulp.task('watch', () => {
     gulp.watch('src/**', ['build:lint', 'build:style', 'build:page']);
 });
-
-gulp.task('default', ['watch', 'build:lint', 'build:style', 'build:page']);
 
