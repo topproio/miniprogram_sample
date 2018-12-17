@@ -1,7 +1,7 @@
 const accessKey = 'Z5eVKI63cMYXboRx19rI2SmPQiQWD0i3kFMlC6GR',// 填写七牛网的accessKey
     secretKey = 'ry4Si2FO58PdbcZkr2coxm0xERHyV6XN7vULEqUu',// 填写七牛网的secretKey
     bucket = 'hello',// 填写七牛网文件所在的镜像
-    domin = 'http://upload.qiniup.com',//上传地址
+    domin = 'https://developer.qiniu.com/kodo/manual/1671/region-endpoint',//上传地址
     viewPath = "http://pjnxk0pmy.bkt.clouddn.com/"// 图片上传后的静态引用路径前缀
 
 
