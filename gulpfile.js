@@ -71,24 +71,39 @@ gulp.task('test:save2',() => {
     gulp.src(['dist/**/*.wxml','dist/**/*.wxss'])
         .pipe(through.obj(function(file, enc, callback){
             this.push(file.path);
-            callback()
+            callback();
         }))
         .on('data',function(xmlPath){
-            console.log(xmlPath)
-            xmlPath.replace('\\','/')
-            console.log(path.resolve('../../img/2.jpg'))
-            gulp.src(['dist/pages/test.wxml'])
+            // 获取当前（.wxml,.wxss）文件的绝对路径，并处理为gulp能读出的路径
+            xmlPath = xmlPath.replace(/\\/g,'/');
+            xmlPath = xmlPath.replace(/^[\w:/\\\-]*dist/,'dist');
+            gulp.src([xmlPath], { base: 'dist' })
+            // 对全文进行匹配，只要符合../../xxx/xxx.jpg这种格式的字符串进行替换
                 .pipe(replace(/[\.|\.\.\/]+[(a-z0-9A-Z_)+/]+(\.jpg|\.png)/g, function(imgPath){
-                    //this.push(match)
-                    //getImgPath(imgPath,xmlPath)
-                    //console.log(imgPath,xmlPath)
-                    //return match.replace(/^[(\.)|(\.\.)\/]+/,uploadOption.viewPath)
+                    // 根据文件的绝对路径和照片的相对路径计算出照片的绝对路径
+                    var relPath = getImgPath(imgPath,xmlPath);
+                    var tem = ''
+                    gulp.src(['src/'+relPath])
+                        .pipe(rev())
+                        .pipe(through.obj(function(file, enc, callback){
+                            this.push(file.path);
+                            callback();
+                        }))
+                        .on('data', function(data){
+                            tem = data;
+                            return this;
+                        })
+                        .pipe(upload({qn: uploadOption.qnOption}))
+                        .pipe(rev.manifest())
+                        .pipe(gulp.dest('mapper'))
 
-                    return imgPath;
+                    // 返回静态服务器的前缀加上相对路径即为显示路径
+                    //return uploadOption.viewPath + relPath;
+                    return imgPath
                 }))
+                .pipe(gulp.dest('dist'));
         })
-})
-
+});
 
 function getImgPath(imgPath,xmlPath){
     console.log('xml',xmlPath)
