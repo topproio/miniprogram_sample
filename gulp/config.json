@@ -1,0 +1,15 @@
+{
+    "src_path": "src",
+    "dist_path": "dist",
+    "eslintrc_path": "./.eslintrc.js",
+    "js_path": "src/**/*.js",
+    "less_path": [
+        "src/pages/**/*.less",
+        "src/components/**/*.less",
+        "src/app.less"
+    ],
+    "page_path": [
+        "src/**/*",
+        "!src/**/*.less"
+    ]
+}
