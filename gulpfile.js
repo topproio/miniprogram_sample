@@ -3,53 +3,33 @@ const less = require('gulp-less');
 const rename = require('gulp-rename');
 const cssnano = require('gulp-cssnano');
 const eslint = require('gulp-eslint');
+const gulpLoadPlugins = require('gulp-load-plugins');
+const {upload} = require('gulp-qndn');
+const replace = require('gulp-replace');
 
-gulp.task('build:lint', () => {
-    gulp.src('src/**/*.js')
-        .pipe(eslint({
-            configFile: './.eslintrc.js'
-        }))
-        .pipe(eslint.format());
-});
+const gulpTaskList = require('fs').readdirSync('./gulp/tasks/');
+const config = require('./gulp/config.json');
 
-gulp.task('build:style', () => {
-    gulp.src(['src/pages/**/*.less',
-        'src/components/**/*.less',
-        'src/app.less'], { base: 'src' })
-        .pipe(less())
-        .pipe(cssnano({
-            zindex: false,
-            autoprefixer: false,
-            discardComments: { removeAll: true }
-        }))
-        .pipe(rename((path) => {
-            path.extname = '.wxss';
-        }))
-        .pipe(gulp.dest('dist'));
-});
+gulpLoadPlugins.eslint = eslint;
+gulpLoadPlugins.less = less;
+gulpLoadPlugins.rename = rename;
+gulpLoadPlugins.cssnano = cssnano;
+gulpLoadPlugins.upload = upload;
+gulpLoadPlugins.replace = replace;
 
-gulp.task('build:page', () => {
-    gulp.src(['src/**/*',
-        '!src/**/*.less'], { base: 'src' })
-        .pipe(rename((path) => {
-            if (path.extname === '.html') {
-                path.extname = '.wxml';
-            }
-        }))
-        .pipe(gulp.dest('dist'));
+gulpTaskList.forEach(function (taskFile) {
+    require('./gulp/tasks/' + taskFile)(gulp, gulpLoadPlugins, config);
 });
 
 
 const uploadOption = require('./uploadOption.js');
     upload = require('gulp-qndn').upload,//七牛上传
-    replace = require('gulp-replace'),
-    fs=require('fs'),
-    through = require('through2'),
-    rev = require('gulp-rev'),
-    revCollector = require('gulp-rev-collector');
+    replace = require('gulp-replace');
+
 
 gulp.task('default', ['watch', 'build:lint', 'build:style', 'build:page']);
 gulp.task('uploadImg', ['build:uploadimage', 'build:replace']);
+
 gulp.task('watch', () => {
     gulp.watch('src/**', ['build:lint', 'build:style', 'build:page']);
 });

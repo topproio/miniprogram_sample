@@ -1,0 +1,26 @@
+{
+    "src_path": "src",
+    "dist_path": "dist",
+    "eslintrc_path": "./.eslintrc.js",
+    "js_path": "src/**/*.js",
+    "jpg_path": "src/**/*.jpg",
+    "png_path": "src/**/*.png",
+    "less_path": [
+        "src/pages/**/*.less",
+        "src/components/**/*.less",
+        "src/app.less"
+    ],
+    "page_path": [
+        "src/**/*",
+        "!src/**/*.less"
+    ],
+    "dist_wxml_path": "dist/**/*.wxml",
+    "dist_wxss_path": "dist/**/*.wxss",
+    "uploadOptions": {
+        "accessKey": "Z5eVKI63cMYXboRx19rI2SmPQiQWD0i3kFMlC6GR",
+        "secretKey": "ry4Si2FO58PdbcZkr2coxm0xERHyV6XN7vULEqUu",
+        "bucket": "hello",
+        "domin": "http://upload.qiniup.com"
+    },
+    "uploadViewPath": "http://pjnxk0pmy.bkt.clouddn.com/"
+}
