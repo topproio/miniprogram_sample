@@ -20,7 +20,10 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-qndn": "0.0.4",
     "gulp-rename": "^1.4.0",
-    "gulp-replace": "^1.0.0"
+    "gulp-replace": "^1.0.0",
+    "gulp-rev": "^9.0.0",
+    "gulp-rev-collector": "^1.3.1",
+    "through2": "^3.0.0"
   },
   "repository": {
     "type": "git",
