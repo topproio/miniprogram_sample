@@ -1,9 +1,20 @@
 module.exports = function (gulp, plugin, config) {
     gulp.task('build:replace', () => {
-        gulp.src([config.dist_wxml_path, config.dist_wxss_path])
-            .pipe(replace(/[\.|\.\.\/]+[(a-z0-9A-Z_)+/]+(\.jpg|\.png)/g, function (match) {
-                return match.replace(/^[(\.)|(\.\.)\/]+/, uploadOption.viewPath);
-            }))
-            .pipe(gulp.dest(config.dist_path));
+        replaceImgByJson();
     });
-}
+
+    function replaceImgByJson(){
+        var mapper = require('../../mapper/imgsCDN.json');
+        for(var i in mapper){
+            var filePath = i;
+            var imgs = mapper[i];
+            imgs.forEach( i => {
+                var imgPath = i.resource;
+                var cdnPath = i.cdn_resource;
+                gulp.src(filePath,{base: 'dist'})
+                    .pipe(plugin.replace(imgPath, cdnPath))
+                    .pipe(gulp.dest('dist'));
+            });
+        };
+    };
+};
